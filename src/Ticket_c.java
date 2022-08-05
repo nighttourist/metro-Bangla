@@ -1,7 +1,7 @@
 
 import java.sql.*;
 import java.sql.SQLException;
-import java.util.Vector;
+//import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -257,17 +257,19 @@ public class Ticket_c extends javax.swing.JFrame {
 
             tble.setModel(DbUtils.resultSetToTableModel(rst));
 
-            if(rst.next() == false)
+            if(rst.next()==false)
             {
                 JOptionPane.showMessageDialog(null," Success");
 
                 user.setText(" ");
-                date.setText("");
+                date.setText(" ");
 
                 user.requestFocusInWindow();
                 date.requestFocusInWindow();
             }else{
                 JOptionPane.showMessageDialog(null," No such value is found");
+                  user.setText(" ");
+                date.setText(" ");
             }
         }
         catch(Exception ee)
@@ -289,8 +291,12 @@ public class Ticket_c extends javax.swing.JFrame {
             s.executeUpdate(sql);
 
             JOptionPane.showMessageDialog(null," Ticket Cancelled Succssfully... ");
-            user.setText("");
-            date.setText("");
+//             rst=s.executeQuery(sql);
+//
+//            tble.setModel(DbUtils.resultSetToTableModel(rst));
+
+            user.setText(" ");
+            date.setText(" ");
             user.requestFocusInWindow();
 
         }
